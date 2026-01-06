@@ -1,14 +1,21 @@
 import Home from "./pages/Home";
 import Resume from "./pages/resume";
+import Admin from "./pages/Admin";
 import { Navbar } from "./components/Navbar";
 
 export default function App() {
-  const isResume = window.location.hash === "#resume";
+  const hash = window.location.hash;
 
   return (
     <>
       <Navbar />
-      {isResume ? <Resume /> : <Home />}
+      {hash === "#resume" ? (
+        <Resume />
+      ) : hash === "#admin" ? (
+        <Admin />
+      ) : (
+        <Home />
+      )}
     </>
   );
 }
