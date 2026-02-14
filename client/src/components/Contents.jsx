@@ -5,32 +5,32 @@ const cards = [
   {
     title: "Skills",
     icon: Code2,
-    color: "#ffc2c7", // Pink
+    color: "#ffc2c7",
     items: ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS"]
   },
   {
     title: "Projects",
     icon: FolderKanban,
-    color: "#b6e5d8", // Mint
+    color: "#b6e5d8",
     items: ["My Portfolio", "Simple Calculator", "Amazon Clone", "RazorPay Clone"]
   },
   {
     title: "Problem Solving",
     icon: Lightbulb,
-    color: "#fbe5c8", // Peach
+    color: "#fbe5c8",
     items: ["Data Structures", "Logical Thinking", "Continuous Learning", "Debugging"]
   },
   {
     title: "Experience",
     icon: Briefcase,
-    color: "#8fdde7", // Sky Blue
+    color: "#8fdde7",
     items: ["Freelance Designer", "Startup Intern (9 Months) as Designer", "Lead Designer (Startup Society, KLU)"]
   },
   {
     title: "Education",
     icon: GraduationCap,
-    color: "#d4a5a5", // Muted Rose
-    items: ["B.Tech CSE (Pursuing) at KL univeristy", "AI for Computational Intelligence", "Data Science Enthusiast"]
+    color: "#d4a5a5",
+    items: ["B.Tech CSE (Pursuing) at KL University", "AI for Computational Intelligence", "Data Science Enthusiast"]
   }
 ];
 
@@ -53,9 +53,9 @@ export function Contents() {
   );
 }
 
-function ContentCard({ card, index }: { card: typeof cards[0], index: number }) {
+function ContentCard({ card, index }) {
   const Icon = card.icon;
-  
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -64,7 +64,7 @@ function ContentCard({ card, index }: { card: typeof cards[0], index: number }) 
       transition={{ delay: index * 0.1 }}
       className="group relative bg-card rounded-2xl p-8 border border-border/50 hover:border-transparent transition-all duration-300 overflow-hidden"
     >
-      {/* Hover Background Color Effect */}
+      {/* Hover Background */}
       <div 
         className="absolute inset-0 opacity-0 group-hover:opacity-30 transition-opacity duration-300"
         style={{ backgroundColor: card.color }}
