@@ -11,8 +11,8 @@ The goal of this project was not just to create a portfolio, but to build a **re
 # 🔗 Live Website
 
 Frontend Deployment  
-https://portfolio-frontend.vercel.app
-
+[https://portfolio-frontend.vercel.app
+](https://portfolio-frontend-eight-alpha.vercel.app/)
 Backend API  
 https://portfolio-backend-7lkz.onrender.com
 
