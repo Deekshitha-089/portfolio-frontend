@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 
-function AdminLogin() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+export default function AdminLogin() {
+
+  const [username,setUsername]=useState("");
+  const [password,setPassword]=useState("");
+  const [error,setError]=useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -12,99 +15,77 @@ function AdminLogin() {
 
     const basicAuth = "Basic " + btoa(username + ":" + password);
 
-    try {
-     const response = await fetch(
-  "https://portfolio-backend-7lkz.onrender.com/api/contacts",
-  {
-        headers: { Authorization: basicAuth },
-      });
+    try{
+      const res = await fetch(
+        "https://portfolio-backend-7lkz.onrender.com/api/contacts",
+        { headers:{ Authorization:basicAuth } }
+      );
 
-      if (response.ok) {
-        localStorage.setItem("auth", basicAuth);
+      if(res.ok){
+        localStorage.setItem("auth",basicAuth);
         navigate("/admin");
-      } else {
+      }else{
         setError("Invalid credentials");
       }
-    } catch {
+
+    }catch{
       setError("Server error");
     }
   };
 
-  const containerStyle = {
-    minHeight: "100vh",
-    background: "linear-gradient(135deg, #0f172a, #1e293b)",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    fontFamily: "inherit",
-  };
-
-  const cardStyle = {
-    background: "rgba(255,255,255,0.05)",
-    backdropFilter: "blur(10px)",
-    padding: "40px",
-    borderRadius: "15px",
-    width: "350px",
-    color: "white",
-    boxShadow: "0 0 30px rgba(0,0,0,0.5)",
-  };
-
-  const inputStyle = {
-    width: "100%",
-    padding: "12px",
-    marginBottom: "15px",
-    borderRadius: "8px",
-    border: "none",
-    backgroundColor: "#1e293b",
-    color: "white",
-  };
-
-  const buttonStyle = {
-    width: "100%",
-    padding: "12px",
-    borderRadius: "8px",
-    border: "none",
-    backgroundColor: "#3b82f6",
-    color: "white",
-    cursor: "pointer",
-    fontWeight: "bold",
-  };
-
   return (
-    <div style={containerStyle}>
-      <div style={cardStyle}>
-        <h2 style={{ marginBottom: "20px" }}>Admin Login</h2>
+    <>
+      <Navbar/>
 
-        <form onSubmit={handleLogin}>
-          <input
-            type="text"
-            placeholder="Username"
-            style={inputStyle}
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+      <section className="min-h-screen pt-32 pb-20 px-6 bg-white dark:bg-black transition">
 
-          <input
-            type="password"
-            placeholder="Password"
-            style={inputStyle}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
+        <div className="max-w-md mx-auto">
 
-          <button type="submit" style={buttonStyle}>
-            Login
-          </button>
+          <h1 className="text-4xl font-bold text-center text-black dark:text-white mb-8">
+            Admin <span className="text-[#ffc2c7]">Login</span>
+          </h1>
 
-          {error && (
-            <p style={{ color: "#ef4444", marginTop: "10px" }}>{error}</p>
-          )}
-        </form>
-      </div>
-    </div>
+          <div className="bg-white dark:bg-neutral-900 border border-gray-200 dark:border-gray-800 shadow-2xl rounded-2xl p-8">
+
+            <form onSubmit={handleLogin} className="space-y-6">
+
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e)=>setUsername(e.target.value)}
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent text-black dark:text-white"
+              />
+
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e)=>setPassword(e.target.value)}
+                required
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-transparent text-black dark:text-white"
+              />
+
+              <button
+                className="w-full py-3 rounded-full bg-[#ffc2c7] text-black font-semibold hover:scale-105 transition shadow-lg"
+              >
+                Login
+              </button>
+
+              {error && (
+                <p className="text-red-500 text-center">{error}</p>
+              )}
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <Footer/>
+    </>
   );
 }
-
-export default AdminLogin;
