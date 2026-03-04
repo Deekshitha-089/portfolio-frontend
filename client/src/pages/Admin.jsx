@@ -16,9 +16,12 @@ function Admin() {
 
   const fetchContacts = async () => {
     try {
-      const res = await fetch("http://localhost:8080/api/contacts", {
-        headers: { Authorization: localStorage.getItem("auth") },
-      });
+      const res = await fetch(
+        "https://portfolio-backend-7lkz.onrender.com/api/contacts",
+        {
+          headers: { Authorization: localStorage.getItem("auth") },
+        }
+      );
 
       if (res.status === 401) {
         localStorage.removeItem("auth");
@@ -34,10 +37,13 @@ function Admin() {
   };
 
   const markContacted = async (id) => {
-    await fetch(`http://localhost:8080/api/contacts/${id}`, {
-      method: "PUT",
-      headers: { Authorization: localStorage.getItem("auth") },
-    });
+    await fetch(
+      `https://portfolio-backend-7lkz.onrender.com/api/contacts/${id}`,
+      {
+        method: "PUT",
+        headers: { Authorization: localStorage.getItem("auth") },
+      }
+    );
     fetchContacts();
   };
 
