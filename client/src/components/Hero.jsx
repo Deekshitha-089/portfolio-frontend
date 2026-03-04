@@ -39,9 +39,9 @@ export function Hero() {
           transition={{ delay: 0.2 }}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-tight tracking-tight text-white mb-6"
         >
-          My Portfolio <br />
+          Hello I'm<br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#ffc2c7] via-[#fbe5c8] to-[#8fdde7]">
-            Experience
+             Deekshitha
           </span>
         </motion.h1>
 
